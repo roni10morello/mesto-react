@@ -35,7 +35,6 @@ function Main({ onAddPlace, onEditAvatar, onEditProfile, onCardClick }) {
   }, []);
 
   return (
-    <>
       <main className="content">
         <section className="profile">
           <button
@@ -73,7 +72,6 @@ function Main({ onAddPlace, onEditAvatar, onEditProfile, onCardClick }) {
           ))}
         </section>
       </main>
-    </>
   );
 }
 

@@ -9,10 +9,8 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   const [selectedCard , setSelectedCard] = useState({});
 
-  // const handleEditAvatarClick = () => setIsEditAvatarPopupOpen(true);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -26,16 +24,15 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
-  function handleCardClick(props) {
-    setSelectedCard(props);
-    setIsImagePopupOpen(true);
+  function handleCardClick(card) {
+    setSelectedCard(card);
+  
   }
 
   function closeAllPopup() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    setIsImagePopupOpen(false);
     setSelectedCard({});
   }
 
@@ -150,10 +147,8 @@ function App() {
         title="Вы уверены?" 
         textButton="Да"  
         onClose={closeAllPopup}/>
-      <ImagePopup 
-        name="image" 
+      <ImagePopup  
         card={selectedCard}
-        isOpen={isImagePopupOpen && "popup_opened"}
         onClose={closeAllPopup}
       />
 
