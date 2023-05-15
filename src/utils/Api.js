@@ -34,27 +34,52 @@ class Api {
     }).then((res) => this._checkAnswer(res));
   }
 
-  updateAvatar(avatar) {
+  updateAvatar({avatar}) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({ avatar }),
+      body: JSON.stringify({avatar: avatar }),
     }).then((res) => this._checkAnswer(res));
   }
 
-  addLikeCard(_id) {
-    return fetch(`${this._url}/cards/${_id}/likes`, {
-      method: "PUT",
-      headers: this._headers,
-    }).then((res) => this._checkAnswer(res));
-  }
+  // addLikeCard(_id) {
+  //   return fetch(`${this._url}/cards/${_id}/likes`, {
+  //     method: "PUT",
+  //     headers: this._headers,
+  //   }).then((res) => this._checkAnswer(res));
+  // }
 
-  removeLikeCard(_id) {
+  // removeLikeCard(_id) {
+  //   return fetch(`${this._url}/cards/${_id}/likes`, {
+  //     method: "DELETE",
+  //     headers: this._headers,
+  //   }).then((res) => this._checkAnswer(res));
+  // }
+
+  changeLikeCardStatus(_id, isLiked) {
     return fetch(`${this._url}/cards/${_id}/likes`, {
-      method: "DELETE",
+
+      method: isLiked ? "PUT": "DELETE",
       headers: this._headers,
     }).then((res) => this._checkAnswer(res));
-  }
+  };
+
+  // changeLikeCardStatus(cardId, isLiked) {
+  //   if (isLiked) {
+  //     return fetch(`${this._url}/cards/${cardId}/likes`, {
+  //       method: 'DELETE',
+  //       headers: this._headers,
+  //     })
+  //       .then(res => this._checkResponse(res))
+  //   } else {
+  //     return fetch(`${this._url}/cards/${cardId}/likes`, {
+  //       method: 'PUT',
+  //       headers: this._headers,
+  //     })
+  //       .then(res => this._checkResponse(res))
+  //   }
+  // }
+
 
   addCard({ name, link }) {
     return fetch(`${this._url}/cards`, {
